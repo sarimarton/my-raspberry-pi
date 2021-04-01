@@ -1,0 +1,4 @@
+[Desktop Entry]
+Name=Automation
+Exec=lxterminal --command="/bin/bash -c '~/projects/automation.sh; read'"
+Type=Application
