@@ -1,6 +1,15 @@
 sleep 10s
 
+# try with 2 coordinates, because the 1st one may be occupied by Focusrite
 xdotool mousemove 1720 20 click 1
+sleep 1s
+xdotool click 1
+
+sleep 2s
+
+xdotool mousemove 1680 20 click 1
+sleep 1s
+xdotool click 1
 
 sleep 5s
 
@@ -10,7 +19,7 @@ aid=$(for id in $(xdotool search --class 'AcrossCenter'); do
   fi
 done)
 
-xdotool windowmove $aid 75% 25%
+# xdotool windowmove $aid 25% 25%
 
 while true; do
   xdotool \
@@ -29,17 +38,4 @@ done
 
 
 
-# Uj tab es a Kiadasaim megnyitasa:
-w=$(for id in $(xdotool search --class 'Chromium'); do
-  if [[ "$(xdotool getwindowname $id)" =~ [[:space:]]-[[:space:]]Chromium$ ]]; then
-    echo $id;
-  fi;
-done)
 
-xdotool \
-  windowactivate $w \
-  key --window $w ctrl+t \
-  type --window $w --delay 50 'https://docs.google.com/spreadsheets/d/12D9OQ4pGwiiVU4krN--Lk3iObmcpqAJ4rSuWkc-cRxo/edit#gid=845405153'
-
-xdotool \
-  key --window $w Return
