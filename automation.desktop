@@ -1,4 +1,4 @@
 [Desktop Entry]
 Name=Automation
-Exec=lxterminal --command="/bin/bash -c 'cd ~/projects/my-raspberry-pi; make; read'"
+Exec=lxterminal --command="/bin/bash -c 'sleep 10s; cd ~/projects/my-raspberry-pi; make; read'"
 Type=Application
