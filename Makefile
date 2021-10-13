@@ -7,13 +7,16 @@ install:
 	cmake --build _build --target install
 
 start:
-	$(pkill -f vban_emitter)
-	~/projects/my-raspberry-pi/vban/_install/bin/vban_emitter -i 192.168.0.2 -p 6980 -s rpi &
-	~/projects/my-raspberry-pi/vban/_install/bin/vban_emitter -i 192.168.0.14 -p 6980 -s rpi &
+	# I couldn't figure out how to make pkill work in both already running and not
+	# yet running cases, so I just force launch another process...
+	./vban/_install/bin/vban_emitter -i 192.168.0.2 -p 6980 -s rpi &
+	pkill -x vban_emitter
+	./vban/_install/bin/vban_emitter -i 192.168.0.2 -p 6980 -s rpi &
+	./vban/_install/bin/vban_emitter -i 192.168.0.14 -p 6980 -s rpi &
 	./automation.sh
 
 stop:
-	pkill -f vban_emitter
+	pkill -x vban_emitter
 
 temp:
 	vcgencmd measure_temp
