@@ -18,6 +18,9 @@ start:
 stop:
 	pkill -x vban_emitter
 
+mouse:
+	./automation.sh
+
 temp:
 	vcgencmd measure_temp
 
